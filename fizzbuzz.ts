@@ -44,8 +44,39 @@ function FizzBuzz3() {
   }
 }
 
-function main() {
-  FizzBuzz3();
+const map = new Map([
+  [3, "Fizz"],
+  [5, "Buzz"],
+  [7, "Bop"],
+]);
+
+// Desctructing
+function FizzBuzz4() {
+  for (let i = 1; i < 100; i++) {
+    let result = "";
+
+    for (let [k, o] of map) {
+      if (i % k === 0) result += o;
+    }
+
+    result ? console.log(result) : console.log(i);
+  }
+}
+
+// Bit faster
+function FizzBuzz5() {
+  for (let i = 1; i < 100; i++) {
+    let result = "";
+
+    for (let obj of map) {
+      if (i % obj[0] === 0) result += obj[1];
+    }
+
+    result ? console.log(result) : console.log(i);
+  }
+}
+async function main() {
+  FizzBuzz5();
 }
 
 main();
